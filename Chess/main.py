@@ -53,9 +53,12 @@ class Board:
 	
 	def setPiece(self, piece, coord = None):
 		if(not coord):
-			self.Board[coord[0], coord[1]] = piece
+			if(not piece):
+				print "Error, None piece entered w/o coordinates"
+			else:
+				self.Board[piece.position[0], piece.position[1]] = piece
 		else:
-			self.Board[piece.position[0], piece.position[1]] = piece
+			self.Board[coord[0], coord[1]] = piece
 	#getting a piece from a string of hte position in the format [a-h][1-8]
 	def getPiece(self, pos):
 		if isinstance(pos, basestring):
@@ -64,6 +67,11 @@ class Board:
 			return self.Board[pos[0], pos[1]]
 		else:
 			return None
+	def printBoard(self):
+		outputStr = ""
+		for i in range(0,8):
+			for j in range(0,8):
+				outputStr
 	#get the string position of the coordinate
 	@staticmethod
 	def getStrPos(crdPos):
