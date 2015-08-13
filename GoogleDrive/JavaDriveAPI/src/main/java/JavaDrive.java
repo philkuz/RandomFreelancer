@@ -24,7 +24,7 @@ import java.util.UUID;
 
 public class JavaDrive {
     /** Amount of time between refreshes in ms **/
-    private static final int refreshTime = 60000;
+    private static final int REFRESH_TIME = 60000;
     /** Application name. */
     private static final String APPLICATION_NAME =
         "Java Drive";
@@ -192,16 +192,24 @@ public class JavaDrive {
     public static void monitor() throws IOException {
       Drive service = getDriveService();
       
-      for(int i = 0; i < 4; i++)
+      for(;;)
       {
-        printChangedFiles(service);
+        doStuffMethod(retrieveChanges(service, null));
+        
         System.out.println("Sleeping thread");
         try{
-        Thread.sleep(15000);
+        Thread.sleep(REFRESH_TIME);
       }catch(InterruptedException e){}
 
       }
 
+    }
+    public static void doStuffMethod(List<Change> changes) throws IOException {
+      for(Change change : changes)
+      {
+        String fileId = change.getFileId();
+        System.out.printf("ID: %s\r\n",  fileId);
+      }
     }
     public static void main(String[] args) throws IOException {
         // Build a new authorized API client service.
