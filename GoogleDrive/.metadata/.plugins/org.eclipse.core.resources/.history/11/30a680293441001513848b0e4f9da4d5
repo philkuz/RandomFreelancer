@@ -1,0 +1,18 @@
+package com.philkuz.javadrive;
+
+import javax.swing.*;
+
+public class WindowHandler {
+	
+	public void addLog()
+	{
+		
+	}
+	WindowHandler()
+	{
+		JFrame frame = new JFrame("Java Drive Util");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JTextField jtf = new JTextField("Starting Log...");
+		frame.getContentPane()
+	}
+}

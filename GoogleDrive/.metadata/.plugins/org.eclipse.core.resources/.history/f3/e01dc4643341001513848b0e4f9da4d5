@@ -1,0 +1,22 @@
+package com.philkuz.javadrive;
+
+
+
+import java.nio.file.*;
+import java.io.IOException;
+
+ 
+/**
+ * Example to watch a directory (or tree) for changes to files.
+ */
+ 
+public class JavaDrive {
+ 
+   
+ 
+    public static void main(String[] args) throws IOException {
+    	Path dir = Paths.get("C:\\Users\\pkusnetsov\\Google Drive");
+    	DirWatch watcher = new DirWatch(dir);
+    	watcher.processEvents();
+    }
+}

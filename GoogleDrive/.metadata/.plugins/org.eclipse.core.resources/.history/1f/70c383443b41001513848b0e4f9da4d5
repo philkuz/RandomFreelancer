@@ -1,0 +1,66 @@
+package com.philkuz.javadrive;
+
+import java.awt.BorderLayout;
+import java.awt.event.*;
+import java.nio.file.Path;
+import java.time.*;
+import javax.swing.*;
+import java.io.*;
+
+public class WindowHandler {
+	private JTextArea taLog;
+	public String getTimeStr(boolean fileSafe)
+	{
+		LocalDateTime now = LocalDateTime.now();
+		if(!fileSafe)
+		{
+			String time = String.format("%1$te %<tb, %<tY %<tH:%<tM:%<tS \t", now);
+			return time;
+		}
+		else
+		{
+			return now;
+		}
+	}
+	public void addLog(String line)
+	{
+		String outputLine = getTimeStr() + line;
+		taLog.append(outputLine);
+	}
+	WindowHandler()
+	{
+		JFrame frame = new JFrame("Java Drive Util");
+		
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		frame.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent evt){
+				windowClose();
+			}
+		});
+		taLog = new JTextArea();
+		addLog("Starting Log");
+		taLog.setColumns(20);
+        
+        taLog.setRows(5);
+        taLog.setWrapStyleWord(true);
+        taLog.setEditable(false);
+        JScrollPane jsPane = new JScrollPane(taLog);
+		frame.getContentPane().add(jsPane, BorderLayout.CENTER);
+		frame.pack();
+		frame.setSize(500, 400);
+		frame.setVisible(true);
+	}
+	public void windowClose()
+	{
+		String logFileName = "javadrive.log";
+		try (Writer writer = new BufferedWriter(new OutputStreamWriter(
+	              new FileOutputStream(logFileName), "utf-8"))) {
+			writer.write(taLog.getText());
+			
+		}catch(IOException e)
+		{
+			
+		}
+		System.exit(0);
+	}
+}

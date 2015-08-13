@@ -1,0 +1,12 @@
+package com.philkuz.javadrive;
+
+import java.io.*;
+import java.util.*;
+import java.nio.file.*;
+
+public class DirWatch {
+	DirWatch(Path dir) throws IOException
+	{
+		
+	}
+}

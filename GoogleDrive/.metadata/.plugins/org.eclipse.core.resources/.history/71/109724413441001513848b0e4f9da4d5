@@ -1,0 +1,22 @@
+package com.philkuz.javadrive;
+
+import java.awt.BorderLayout;
+
+import javax.swing.*;
+
+public class WindowHandler {
+	
+	public void addLog()
+	{
+		
+	}
+	WindowHandler()
+	{
+		JFrame frame = new JFrame("Java Drive Util");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		JTextField jtf = new JTextField("Starting Log...");
+		frame.getContentPane().add(jtf, BorderLayout.CENTER);
+		frame.pack();
+		frame.setVisible(true);
+	}
+}

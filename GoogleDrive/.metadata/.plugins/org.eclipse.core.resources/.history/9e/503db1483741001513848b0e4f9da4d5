@@ -1,0 +1,27 @@
+package com.philkuz.javadrive;
+
+import java.awt.BorderLayout;
+import java.time.*;
+import javax.swing.*;
+
+public class WindowHandler {
+	private JTextArea taLog;
+	public void addLog(String line)
+	{
+		
+		LocalTime now = LocalTime.now();
+		String time = String.format("%1tmH:%<tM:%<tS %<te %<tm, %tY\t", now);
+		String outputLine = time + line+"\n";
+		taLog.append(outputLine);
+		
+	}
+	WindowHandler()
+	{
+		JFrame frame = new JFrame("Java Drive Util");
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		taLog = new JTextArea("Starting Log...\n");
+		frame.getContentPane().add(taLog, BorderLayout.CENTER);
+		frame.pack();
+		frame.setVisible(true);
+	}
+}

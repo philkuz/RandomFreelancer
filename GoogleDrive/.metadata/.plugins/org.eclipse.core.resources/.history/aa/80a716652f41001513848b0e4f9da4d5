@@ -1,0 +1,19 @@
+package com.philkuz.javadrive;
+
+import java.io.*;
+import java.util.*;
+import static java.nio.file.StandardWatchEventKinds.*;
+import static java.nio.file.LinkOption.*;
+import java.nio.file.*;
+
+public class DirWatch {
+	private final WatchService watcher;
+    private final Map<WatchKey,Path> keys;
+    private final boolean recursive;
+    private boolean trace = false;
+    
+	DirWatch(Path dir) throws IOException
+	{
+		
+	}
+}

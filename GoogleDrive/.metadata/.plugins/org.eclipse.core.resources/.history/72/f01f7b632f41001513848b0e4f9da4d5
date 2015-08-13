@@ -1,0 +1,14 @@
+package com.philkuz.javadrive;
+
+import java.io.*;
+import java.util.*;
+import static java.nio.file.StandardWatchEventKinds.*;
+import static java.nio.file.LinkOption.*;
+import java.nio.file.*;
+
+public class DirWatch {
+	DirWatch(Path dir) throws IOException
+	{
+		
+	}
+}
